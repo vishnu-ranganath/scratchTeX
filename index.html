@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>scratchTeX - Online Scratch Paper</title>
+<link href="scratchTeX.css" rel="stylesheet">
+<script>
+window.MathJax = {
+	tex: {
+		macros: {
+			diff: "\\mathrm{d}"
+		},
+		tags: "ams"
+	},
+	svg: {
+		displayAlign: "left"
+	},
+	startup: {
+		typeset: false
+	}
+};
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js"></script>
+</head>
+<body>
+	<div id="button-column">
+		<div id="button-holder-header">
+			&nbsp;
+		</div>
+		<!-- button-containing <div>s go here -->
+		<div id="button-holder-footer">
+			<button id="removeAll">clear</button>
+		</div>
+	</div>
+	<div id="input-column">
+		<div id="input-header">
+			TeX Source
+		</div>
+		<!-- input <div>s go here -->
+		<div id="input-footer">
+			<button id="add-btn">add row</button>
+		</div>
+	</div>
+	<div id="output-column">
+		<div id="output-header">
+			Resulting equation
+		</div>
+		<!-- output <div>s go here -->
+		<div id="output-footer">
+			&nbsp;
+		</div>
+	</div>
+<script src="scratchTeX.js"></script>
+</body>
+</html>

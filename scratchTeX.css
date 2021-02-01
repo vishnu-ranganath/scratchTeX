@@ -1,0 +1,81 @@
+textarea {
+	border: none;
+	overflow: auto;
+	outline: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	resize: none;
+	margin: 0px;
+}
+textarea:focus {
+	background-color: #eeeeee
+}
+#button-column {
+	position: absolute;
+	top: 0px;
+	left: 2.5vw;
+	width: 5vw;
+	text-align: center;
+}
+#input-column {
+	position: absolute;
+	top: 0px;
+	left: 7.5vw;
+	width: 40vw;
+	text-align: center;
+}
+#output-column {
+	position: absolute;
+	top: 0px;
+	right: 2.5vw;
+	width: 50vw;
+	text-align: center;
+}
+#button-holder-header {
+	border-bottom: 2px black solid;
+	height: 1em;
+	padding-top: 0.5em;
+}
+#input-header {
+	border-bottom: 2px black solid;
+	border-left: 2px black solid;
+	border-right: 2px black solid;
+	height: 1em;
+	padding-top: 0.5em;
+}
+#output-header {
+	border-bottom: 2px black solid;
+	height: 1em;
+	padding-top: 0.5em;
+}
+#button-holder-footer {
+	height: 1.5em;
+	padding-top: 0.5em;
+}
+#input-footer {
+	border-left: 2px black solid;
+	border-right: 2px black solid;
+	height: 1.5em;
+	padding-top: 0.5em;
+}
+#output-footer {
+	height: 1.5em;
+	padding-top: 0.5em;
+}
+.button-holder {
+	border-bottom: 2px black solid;
+}
+.tex-input {
+	width: 40vw;
+	padding: 0px;
+	vertical-align: top;
+	border-bottom: 2px black solid;
+	border-left: 2px black solid;
+	border-right: 2px black solid;
+}
+.svg-output {
+	padding-left: 1vw;
+	padding-right: 1vw;
+	border-bottom: 2px transparent solid;
+}
