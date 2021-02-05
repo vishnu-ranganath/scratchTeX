@@ -8,6 +8,13 @@ var outputFooter = document.getElementById("output-footer");
 
 var currRowNumber = 0; //This is the number of the (vertically) lowest row
 
+window.triggerInputEvent = function(rowNum) {
+	var inputElement = document.getElementById("input-" + rowNum);
+	inputElement.addEventListener("click", updateEquation);
+	inputElement.click();
+	inputElement.removeEventListener("click", updateEquation);
+}
+
 window.updateEquation = function(e) {
 	var s = this.value;
 	s = "\\[" + s + "\\]";
@@ -56,27 +63,33 @@ window.addRow = function(e) {
 	var newButtonHolder = document.createElement("div");
 	var newInput = document.createElement("textarea");
 	var newOutput = document.createElement("div");
-	var newButton = document.createElement("button");
+	var newRemButton = document.createElement("button");
+	var newDupButton = document.createElement("button");
 	
-	newButton.innerHTML = "X";
-	newButton.classList = ["rem-btn"];
-	newButton.id = "button-" + rowNum;
+	newRemButton.innerHTML = "X";
+	newRemButton.classList = ["rem-btn"];
+	newRemButton.id = "remove-button-" + rowNum;
 	
-	newButtonHolder.innerHTML = "<br/>";
+	newDupButton.innerHTML = "duplicate";
+	newDupButton.id = "duplicate-button-" + rowNum;
+	
+	newButtonHolder.appendChild(document.createElement("br"));
 	newButtonHolder.classList = ["button-holder"];
-	newButtonHolder.appendChild(newButton);
+	newButtonHolder.appendChild(newRemButton);
+	newButtonHolder.appendChild(newDupButton);
 	newButtonHolder.id = "button-holder-" + rowNum;
 	
 	newInput.classList = ["tex-input"];
 	newInput.id = "input-" + rowNum;
 	
 	newOutput.classList = ["svg-output"];
-	newOutput.id= "output-" + rowNum;
+	newOutput.id = "output-" + rowNum;
 	
 	currRowNumber = rowNum;
 	
 	newInput.addEventListener("keyup", updateEquation);
-	newButton.addEventListener("click", removeEquation);
+	newRemButton.addEventListener("click", removeEquation);
+	newDupButton.addEventListener("click", copyEquation);
 	
 	buttonColumn.removeChild(buttonFooter);
 	inputColumn.removeChild(inputFooter);
@@ -90,15 +103,13 @@ window.addRow = function(e) {
 	inputColumn.appendChild(inputFooter);
 	outputColumn.appendChild(outputFooter);
 	
-	newInput.addEventListener("click", updateEquation); //Artificially trigger the event
-	newInput.click();
-	newInput.removeEventListener("click", updateEquation);
+	triggerInputEvent(rowNum);
 	newInput.focus();
 	document.getElementById("output-" + currRowNumber).style.borderBottom = "2px black solid";
 }
 
 window.removeEquation = function(e) {
-	var rowNum = +this.id.replace("button-", "");
+	var rowNum = +this.id.replace("remove-button-", "");
 	var equationElement = document.getElementById("output-" + rowNum);
 	MathJax.typesetClear([equationElement]);
 	equationElement.innerHTML = "";
@@ -114,7 +125,7 @@ window.removeEquation = function(e) {
 		for(var i = rowNum; i < currRowNumber; i++) {
 			var j = i + 1;
 			document.getElementById("button-holder-" + j).id = ("button-holder-" + i);
-			document.getElementById("button-" + j).id = ("button-" + i);
+			document.getElementById("remove-button-" + j).id = ("remove-button-" + i);
 			document.getElementById("input-"+ j).id = ("input-"+ i);
 			document.getElementById("output-"+ j).id = ("output-"+ i);
 		}
@@ -127,6 +138,17 @@ window.removeAll = function(e) {
 	var numBtns = allBtns.length;
 	for(var i = numBtns - 1; i > -1; i--) {
 		allBtns[i].click();
+	}
+}
+
+window.copyEquation = function(e) {
+	var rowNum = +this.id.replace("duplicate-button-", "");
+	addRow();
+	//currRowNumber has now incremented by one
+	for(var i = currRowNumber; i > rowNum; i--) {
+		var oneLess = i - 1;
+		document.getElementById("input-" + i).value = document.getElementById("input-" + oneLess).value;
+		triggerInputEvent(i);
 	}
 }
 
