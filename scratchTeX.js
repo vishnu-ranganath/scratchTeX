@@ -17,7 +17,6 @@ window.triggerInputEvent = function(rowNum) {
 
 window.updateEquation = function(e) {
 	var s = this.value;
-	s = "\\[" + s + "\\]";
 	s = s.replace(/\<br\>/g, "<br\/>");
 	s = s.replace(/\<br\/\>/g, " ");
 	s = s.replace(/\<div\>/g, " ");
@@ -26,11 +25,11 @@ window.updateEquation = function(e) {
 	s = s.replace(/\r/g, " ");
 	var rowNum = +this.id.replace("input-", "")
 	var equationElement = document.getElementById("output-" + rowNum);
-	equationElement.innerHTML = s;
-	try {
-		MathJax.typeset([equationElement]);
-	} catch(e) {
-	}
+	katex.render(s, equationElement, {
+		throwOnError: false,
+		displayMode: true,
+		fleqn: true
+	});
 	alignRow(rowNum);
 };
 

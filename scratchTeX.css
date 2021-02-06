@@ -75,7 +75,5 @@ textarea:focus {
 	border-right: 2px black solid;
 }
 .svg-output {
-	padding-left: 1vw;
-	padding-right: 1vw;
 	border-bottom: 2px transparent solid;
 }

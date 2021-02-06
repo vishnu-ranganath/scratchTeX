@@ -11,6 +11,6 @@ Improvements yet to be made:
 - Other UI improvements
 - Custom TeX Macros
 
-This project uses the JavaScript library MathJax to render math.
+This project uses the open source library KaTeX to render math.
 
 The project is live now! See https://vishnu-ranganath.github.io/scratchTeX
