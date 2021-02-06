@@ -28,7 +28,7 @@ textarea:focus {
 #output-column {
 	position: absolute;
 	top: 0px;
-	right: 2.5vw;
+	left: 47.5vw;
 	width: 50vw;
 	text-align: center;
 }

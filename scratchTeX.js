@@ -131,6 +131,7 @@ window.removeEquation = function(e) {
 		}
 		currRowNumber -= 1;
 	}
+	document.getElementById("output-" + currRowNumber).style.borderBottom = "2px black solid";
 }
 
 window.removeAll = function(e) {
