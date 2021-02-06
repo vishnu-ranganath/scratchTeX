@@ -110,7 +110,6 @@ window.addRow = function(e) {
 window.removeEquation = function(e) {
 	var rowNum = +this.id.replace("remove-button-", "");
 	var equationElement = document.getElementById("output-" + rowNum);
-	MathJax.typesetClear([equationElement]);
 	equationElement.innerHTML = "";
 	
 	buttonColumn.removeChild(document.getElementById("button-holder-" + rowNum));
