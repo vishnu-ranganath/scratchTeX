@@ -62,17 +62,21 @@ window.addRow = function(e) {
 	var newButtonHolder = document.createElement("div");
 	var newInput = document.createElement("textarea");
 	var newOutput = document.createElement("div");
-	var newRemButton = document.createElement("button");
-	var newDupButton = document.createElement("button");
+	var newRemButton = document.createElement("img");
+	var newDupButton = document.createElement("img");
 	
 	newRemButton.innerHTML = "X";
 	newRemButton.classList = ["rem-btn"];
+	newRemButton.classList.add("clickable-icon");
+	newRemButton.src = "remove.svg";
 	newRemButton.id = "remove-button-" + rowNum;
 	
 	newDupButton.innerHTML = "duplicate";
+	newDupButton.classList = ["clickable-icon"];
+	newDupButton.src = "duplicate.svg";
 	newDupButton.id = "duplicate-button-" + rowNum;
 	
-	newButtonHolder.appendChild(document.createElement("br"));
+	//newButtonHolder.appendChild(document.createElement("br"));
 	newButtonHolder.classList = ["button-holder"];
 	newButtonHolder.appendChild(newRemButton);
 	newButtonHolder.appendChild(newDupButton);
