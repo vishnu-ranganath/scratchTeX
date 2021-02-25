@@ -138,6 +138,7 @@ window.removeEquation = function(e) {
 }
 
 window.removeAll = function(e) {
+	if(!confirm("Delete all rows?")) {return false;}
 	var allBtns = document.getElementsByClassName("rem-btn");
 	var numBtns = allBtns.length;
 	for(var i = numBtns - 1; i > -1; i--) {
