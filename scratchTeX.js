@@ -124,6 +124,7 @@ window.removeEquation = function(e) {
 			var j = i + 1;
 			document.getElementById("button-holder-" + j).id = ("button-holder-" + i);
 			document.getElementById("remove-button-" + j).id = ("remove-button-" + i);
+			document.getElementById("duplicate-button-" + j).id = ("duplicate-button-" + i);
 			document.getElementById("input-"+ j).id = ("input-"+ i);
 			document.getElementById("output-"+ j).id = ("output-"+ i);
 		}
@@ -149,6 +150,7 @@ window.copyEquation = function(e) {
 		document.getElementById("input-" + i).value = document.getElementById("input-" + oneLess).value;
 		triggerInputEvent(i);
 	}
+	document.getElementById("input-" + (+rowNum + 1)).focus();
 }
 
 document.getElementById("removeAll").addEventListener("click", removeAll);
