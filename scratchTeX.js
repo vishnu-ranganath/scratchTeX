@@ -28,7 +28,10 @@ window.updateEquation = function(e) {
 	katex.render(s, equationElement, {
 		throwOnError: false,
 		displayMode: true,
-		fleqn: true
+		fleqn: true,
+		macros: {
+			"\\diff": "\\,\\mathrm{d}"
+		}
 	});
 	alignRow(rowNum);
 };
