@@ -161,8 +161,17 @@ window.copyEquation = function(e) {
 	document.getElementById("input-" + (+rowNum + 1)).focus();
 }
 
+window.showSidebar = function(e) {
+	document.getElementById("settings-sidebar").style.display = "block";
+}
+window.hideSidebar = function(e) {
+	document.getElementById("settings-sidebar").style.display = "none";
+}
+
 document.getElementById("removeAll").addEventListener("click", removeAll);
 document.getElementById("add-btn").addEventListener("click", addRow);
+document.getElementById("settings-btn").addEventListener("click", showSidebar);
+document.getElementById("close-settings-btn").addEventListener("click", hideSidebar);
 
 window.alignRow("header");
 window.alignRow("footer");

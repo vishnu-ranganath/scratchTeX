@@ -11,6 +11,25 @@ textarea {
 textarea:focus {
 	background-color: #eeeeee
 }
+#settings-sidebar {
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	right: 0px;
+	left: 80vw;
+	padding-left: 2.5vw;
+	padding-right: 2.5vw;
+	background-color: #aaaaaa;
+	display: none;
+}
+#settings-heading {
+	text-align: center;
+	font-size: 150%
+}
+#close-settings-btn {
+	height: 0.8em;
+	margin: 0px;
+}
 #button-column {
 	position: absolute;
 	top: 0px;
