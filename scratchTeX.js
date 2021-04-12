@@ -71,12 +71,12 @@ window.addRow = function(e) {
 	newRemButton.innerHTML = "X";
 	newRemButton.classList = ["rem-btn"];
 	newRemButton.classList.add("clickable-icon");
-	newRemButton.src = "remove.svg";
+	newRemButton.src = "svg/remove.svg";
 	newRemButton.id = "remove-button-" + rowNum;
 	
 	newDupButton.innerHTML = "duplicate";
 	newDupButton.classList = ["clickable-icon"];
-	newDupButton.src = "duplicate.svg";
+	newDupButton.src = "svg/duplicate.svg";
 	newDupButton.id = "duplicate-button-" + rowNum;
 	
 	//newButtonHolder.appendChild(document.createElement("br"));
