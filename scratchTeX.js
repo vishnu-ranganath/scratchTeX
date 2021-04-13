@@ -94,10 +94,16 @@ window.addRow = function(e) {
 	currRowNumber = rowNum;
 	
 	newInput.addEventListener("keyup", updateEquation);
+	
 	newRemButton.addEventListener("click", removeEquation);
+	
 	newDupButton.addEventListener("click", copyEquation);
-	newButtonHolder.addEventListener("dragstart", moveEquation);
+	
+	newButtonHolder.addEventListener("dragstart", moveEquation);	
+	newButtonHolder.addEventListener("dragend", releaseEquation);
 	newButtonHolder.addEventListener("dragover", dragEquationOver);
+	newButtonHolder.addEventListener("dragenter", dragEquationEnter);
+	newButtonHolder.addEventListener("dragleave", dragEquationLeave);	
 	newButtonHolder.addEventListener("drop", dropEquation);
 	
 	buttonColumn.removeChild(buttonFooter);
@@ -167,12 +173,45 @@ window.copyEquation = function(e) {
 window.moveEquation = function(e) {
 	e.dataTransfer.setData("scratchtex/row", e.target.id);
 	e.dataTransfer.dropEffect = "move";
+	var i = +e.target.id.split("-")[2];
+	document.getElementById("button-holder-" + i).classList.add("drag-from");
+	document.getElementById("input-" + i).classList.add("drag-from");
+}
+
+window.releaseEquation = function (e) {
+	for(var i = 1; i <= currRowNumber; i++) {
+		document.getElementById("button-holder-" + i).classList.remove("drag-from");
+		document.getElementById("input-" + i).classList.remove("drag-from");
+		document.getElementById("button-holder-" + i).classList.remove("drag-to");
+		document.getElementById("input-" + i).classList.remove("drag-to");
+	}
 }
 
 window.dragEquationOver = function(e) {
-	if(e.dataTransfer.types.includes("scratchtex/row") && e.dataTransfer.getData("scratchtex/row") != this.id) {
-		e.preventDefault();
+	if(!e.dataTransfer.types.includes("scratchtex/row")) {
+		return true;
 	}
+	e.preventDefault();
+}
+
+window.dragEquationEnter = function(e) {
+	if(!e.dataTransfer.types.includes("scratchtex/row")) {
+		return true;
+	}
+	var i = +this.id.split("-")[2];
+	document.getElementById("button-holder-" + i).classList.add("drag-to");
+	document.getElementById("input-" + i).classList.add("drag-to");
+	e.preventDefault();
+}
+
+window.dragEquationLeave = function(e) {
+	if(e.relatedTarget.parentNode === this || e.relatedTarget === this) {
+		e.preventDefault();
+		return false;
+	}
+	var i = +this.id.split("-")[2];
+	document.getElementById("button-holder-" + i).classList.remove("drag-to");
+	document.getElementById("input-" + i).classList.remove("drag-to");
 }
 
 window.dropEquation = function(e) {
