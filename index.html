@@ -15,7 +15,7 @@
 		</div>
 		<!-- button-containing <div>s go here -->
 		<div id="button-holder-footer">
-			<img id="removeAll" src="svg/clear.svg" class="clickable-icon"/>
+			<img id="removeAll" src="svg/clear.svg" class="clickable-icon" draggable="false"/>
 		</div>
 	</div>
 	<div id="input-column">
@@ -24,8 +24,10 @@
 		</div>
 		<!-- input <div>s go here -->
 		<div id="input-footer">
-			<img id="add-btn" src="svg/add.svg" class="clickable-icon"/>
-			<a href="https://github.com/vishnu-ranganath/scratchTeX/blob/main/documentation.md" target="blank"><img id="help-btn" src="svg/help.svg" class="clickable-icon"/></a>
+			<img id="add-btn" src="svg/add.svg" class="clickable-icon" draggable="false"/>
+			<a href="https://github.com/vishnu-ranganath/scratchTeX/blob/main/documentation.md" target="blank" draggable="false">
+				<img id="help-btn" src="svg/help.svg" class="clickable-icon"/ draggable="false">
+			</a>
 		</div>
 	</div>
 	<div id="output-column">
@@ -34,11 +36,11 @@
 		</div>
 		<!-- output <div>s go here -->
 		<div id="output-footer">
-			<img id="settings-btn" src="svg/settings.svg" class="clickable-icon"/>
+			<img id="settings-btn" src="svg/settings.svg" class="clickable-icon" draggable="false"/>
 		</div>
 	</div>
 	<div id="settings-sidebar">
-			<p id="settings-heading">Settings <img id="close-settings-btn" src="svg/remove.svg"/></p>
+			<p id="settings-heading">Settings <img id="close-settings-btn" src="svg/remove.svg" draggable="false"/></p>
 			Nothing here for now, stay tuned! Planned settings include:
 			<ul>
 				<li>Custom macros</li>

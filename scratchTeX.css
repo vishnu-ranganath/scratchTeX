@@ -29,6 +29,7 @@ textarea:focus {
 #close-settings-btn {
 	height: 0.8em;
 	margin: 0px;
+	cursor: pointer;
 }
 #button-column {
 	position: absolute;
@@ -84,6 +85,7 @@ textarea:focus {
 }
 .button-holder {
 	border-bottom: 2px black solid;
+	cursor: grab;
 }
 .tex-input {
 	width: 40vw;
@@ -97,6 +99,7 @@ textarea:focus {
 	border-bottom: 2px transparent solid;
 }
 .clickable-icon {
+	cursor: pointer;
 	height: 1.5em;
 	margin-top: 0.5em;
 	margin-left: 0.2em;
