@@ -68,19 +68,19 @@ window.addRow = function(e) {
 	var newRemButton = document.createElement("img");
 	var newDupButton = document.createElement("img");
 	
-	newRemButton.innerHTML = "X";
 	newRemButton.classList = ["rem-btn"];
 	newRemButton.classList.add("clickable-icon");
 	newRemButton.src = "svg/remove.svg";
 	newRemButton.id = "remove-button-" + rowNum;
+	newRemButton.setAttribute("draggable", false);
 	
-	newDupButton.innerHTML = "duplicate";
 	newDupButton.classList = ["clickable-icon"];
 	newDupButton.src = "svg/duplicate.svg";
 	newDupButton.id = "duplicate-button-" + rowNum;
+	newDupButton.setAttribute("draggable", false);
 	
-	//newButtonHolder.appendChild(document.createElement("br"));
 	newButtonHolder.classList = ["button-holder"];
+	newButtonHolder.setAttribute("draggable", true);
 	newButtonHolder.appendChild(newRemButton);
 	newButtonHolder.appendChild(newDupButton);
 	newButtonHolder.id = "button-holder-" + rowNum;
@@ -96,6 +96,9 @@ window.addRow = function(e) {
 	newInput.addEventListener("keyup", updateEquation);
 	newRemButton.addEventListener("click", removeEquation);
 	newDupButton.addEventListener("click", copyEquation);
+	newButtonHolder.addEventListener("dragstart", moveEquation);
+	newButtonHolder.addEventListener("dragover", dragEquationOver);
+	newButtonHolder.addEventListener("drop", dropEquation);
 	
 	buttonColumn.removeChild(buttonFooter);
 	inputColumn.removeChild(inputFooter);
@@ -161,9 +164,46 @@ window.copyEquation = function(e) {
 	document.getElementById("input-" + (+rowNum + 1)).focus();
 }
 
+window.moveEquation = function(e) {
+	e.dataTransfer.setData("scratchtex/row", e.target.id);
+	e.dataTransfer.dropEffect = "move";
+}
+
+window.dragEquationOver = function(e) {
+	if(e.dataTransfer.types.includes("scratchtex/row") && e.dataTransfer.getData("scratchtex/row") != this.id) {
+		e.preventDefault();
+	}
+}
+
+window.dropEquation = function(e) {
+	e.preventDefault();
+	var rowToReplace = +this.id.split("-")[2];
+	var replaceWith = +e.dataTransfer.getData("scratchtex/row").split("-")[2];
+	if(replaceWith < rowToReplace) {
+		var oldContents = document.getElementById("input-" + replaceWith).value;
+		for(var i = replaceWith; i < rowToReplace; i++) {
+			var j = i + 1;
+			document.getElementById("input-" + i).value = document.getElementById("input-" + j).value;
+			triggerInputEvent(i);
+		}
+		document.getElementById("input-" + rowToReplace).value = oldContents;
+		triggerInputEvent(rowToReplace);
+	} else {
+		var oldContents = document.getElementById("input-" + replaceWith).value;
+		for(var i = replaceWith; i > rowToReplace; i--) {
+			var j = i - 1;
+			document.getElementById("input-" + i).value = document.getElementById("input-" + j).value;
+			triggerInputEvent(i);
+		}
+		document.getElementById("input-" + rowToReplace).value = oldContents;
+		triggerInputEvent(rowToReplace);
+	}
+}
+
 window.showSidebar = function(e) {
 	document.getElementById("settings-sidebar").style.display = "block";
 }
+
 window.hideSidebar = function(e) {
 	document.getElementById("settings-sidebar").style.display = "none";
 }
