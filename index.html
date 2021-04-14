@@ -1,7 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8"/>
+<!DOCTYPE html><html><head>
+<meta charset="utf-8">
 <title>scratchTeX - Online Scratch Paper</title>
 <link rel="stylesheet" href="scratchTeX.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" crossorigin="anonymous">
@@ -11,11 +9,11 @@
 <body>
 	<div id="button-column">
 		<div id="button-holder-header">
-			&nbsp;
+			 
 		</div>
 		<!-- button-containing <div>s go here -->
 		<div id="button-holder-footer">
-			<img id="removeAll" src="svg/clear.svg" class="clickable-icon" draggable="false"/>
+			<img id="removeAll" src="svg/clear.svg" class="clickable-icon" draggable="false">
 		</div>
 	</div>
 	<div id="input-column">
@@ -24,9 +22,9 @@
 		</div>
 		<!-- input <div>s go here -->
 		<div id="input-footer">
-			<img id="add-btn" src="svg/add.svg" class="clickable-icon" draggable="false"/>
+			<img id="add-btn" src="svg/add.svg" class="clickable-icon" draggable="false">
 			<a href="https://github.com/vishnu-ranganath/scratchTeX/blob/main/documentation.md" target="blank" draggable="false">
-				<img id="help-btn" src="svg/help.svg" class="clickable-icon"/ draggable="false">
+				<img id="help-btn" src="svg/help.svg" class="clickable-icon" draggable="false">
 			</a>
 		</div>
 	</div>
@@ -36,17 +34,19 @@
 		</div>
 		<!-- output <div>s go here -->
 		<div id="output-footer">
-			<img id="settings-btn" src="svg/settings.svg" class="clickable-icon" draggable="false"/>
+			<img id="settings-btn" src="svg/settings.svg" class="clickable-icon" draggable="false">
+			<img id="screenshot-btn" src="svg/download.svg" class="clickable-icon" draggable="false">
 		</div>
 	</div>
 	<div id="settings-sidebar">
-			<p id="settings-heading">Settings <img id="close-settings-btn" src="svg/remove.svg" draggable="false"/></p>
+			<p id="settings-heading">Settings <img id="close-settings-btn" src="svg/remove.svg" draggable="false"></p>
 			Nothing here for now, stay tuned! Planned settings include:
 			<ul>
 				<li>Custom macros</li>
 				<li>Dark theme</li>
 			</ul>
 	</div>
-<script src="scratchTeX.js"></script>
-</body>
-</html>
+<script type="module" src="scratchTeX.js"></script>
+
+
+</body></html>
